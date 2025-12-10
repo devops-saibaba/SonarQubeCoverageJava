@@ -26,7 +26,7 @@ jobs:
       run: mvn clean package
   job2_codeCoverage:
     if: ${{ github.event.inputs.job_name == 'job2_codeCoverage' }}
-    #needs: job1_build # creating dependency between 2 jobs. 
+    needs: job1_build # creating dependency between 2 jobs. 
     # first build job will be completed and then code coverage will start
     runs-on: ubuntu-latest
     steps: 
