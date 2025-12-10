@@ -1,6 +1,6 @@
 name: build JAVA with artifact application
 on:
-  push: # multiple triggers when this workflow can run
+ workflow_dispatch: # multiple triggers when this workflow can run
    inputs:  # user to select the jobname
      job_name:  # can be any name like a variable name
        description: "Select the Job to run" # desciption visible to user
