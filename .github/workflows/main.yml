@@ -41,8 +41,13 @@ jobs:
       run: mvn clean package
     - name: Code Coverage using sonarcloud
       run: mvn -B verify sonar:sonar -Dsonar.projectKey=sonar-qube-org-demo-nov_sonar-demo-org-nov-2025-project -Dsonar.organization=sonar-qube-org-demo-nov -Dsonar.host.url=https://sonarcloud.io -Dsonar.token=$SONAR_TOKEN
-      env:
-       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-       # GITHUB_TOKEN: Automatically generated token for GitHub API authentication (with limited scope).
-       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN}}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # GITHUB_TOKEN: Automatically generated token for GitHub API authentication (with limited scope).
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN}}
+    - name: Upload artifact to github repo
+        uses: actions/upload-artifact@v4 # Use the latest version
+        with:
+          - name: myjava-build-artifact
+             path: /home/runner/work/SonarQubeCoverageJava/SonarQubeCoverageJava/target/wicket-pwnedpasswords-validator-2.0.1-SNAPSHOT.jar
 
